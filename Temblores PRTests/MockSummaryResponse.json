@@ -1,0 +1,55 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1578450941000,
+        "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=18.4655&longitude=-66.1057&maxradiuskm=160&limit=10",
+        "title": "USGS Earthquakes",
+        "status": 200,
+        "api": "1.8.1",
+        "limit": 10,
+        "offset": 1,
+        "count": 10
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 2.7400000000000002,
+                "place": "4km SSW of Indios, Puerto Rico",
+                "time": 1578448836720,
+                "updated": 1578450851666,
+                "tz": -240,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr2020008011",
+                "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=pr2020008011&format=geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 116,
+                "net": "pr",
+                "code": "2020008011",
+                "ids": ",pr2020008011,",
+                "sources": ",pr,",
+                "types": ",geoserve,origin,phase-data,",
+                "nst": 9,
+                "dmin": 0.20349999999999999,
+                "rms": 0.22,
+                "gap": 205,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 2.7 - 4km SSW of Indios, Puerto Rico"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.841099999999997,
+                    17.957100000000001,
+                    8
+                ]
+            },
+            "id": "pr2020008011"
+        }
+    ]
+}
