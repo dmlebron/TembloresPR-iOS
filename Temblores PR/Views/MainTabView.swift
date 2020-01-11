@@ -16,7 +16,6 @@ struct MainTabView: View {
     var body: some View {
         
         TabView {
-            
             ContentView(viewModel: summarViewModel)
                 .tabItem {
                     Image(systemName: "waveform.path.ecg")
@@ -29,6 +28,8 @@ struct MainTabView: View {
                     Text("Map")
             }
         }
+        .accentColor(.black)
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
