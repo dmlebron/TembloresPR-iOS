@@ -15,6 +15,7 @@ enum HTTPMethod: String {
 }
 
 protocol Endpoint {
+    var baseURL: String { get }
     var version: String? { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
@@ -23,17 +24,18 @@ protocol Endpoint {
 }
 
 extension Endpoint {
-    
-    var baseURL: String { "http://localhost:8080" }
-    
+            
     var version: String? { "1.0" }
     
     func urlRequest() -> URLRequest? {
-        guard let url = URL(string: baseURL + path) else { return nil }
+        
+        guard var urlComponents = URLComponents(string: baseURL + path) else { return nil }
+        let queryItems = parameters?.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        urlComponents.queryItems = queryItems
+        guard let url = urlComponents.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         request.allHTTPHeaderFields = headers
-        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters ?? [:])
         return request
     }
 }
@@ -57,48 +59,28 @@ class NetworkService: Network {
     }
 }
 
-class LoginService {
+enum EarthquakeEndpoint: Endpoint {
     
-    let service: Network
+    case summary(_ latitude: Double, longitude: Double)
     
-    init(service: Network) {
-        self.service = service
-    }
-
-    func register(username: String, password: String) -> AnyPublisher<RegisterResponse, Error> {
-        let endpoint = LoginEndpoint.register(username, password)
-        return service.startTransaction(for: endpoint.urlRequest()!)
-            .decode(type: RegisterResponse.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-    }
-}
-
-struct RegisterResponse: Decodable {
-    let success: Bool
-}
-
-enum LoginEndpoint: Endpoint {
-
-    case register(_ username: String, _ password: String)
-    
-    var httpMethod: HTTPMethod {
-        switch self {
-        case .register(_, _):
-            return .post
-        }
+    var baseURL: String {
+        return "https://earthquake.usgs.gov"
     }
     
-    var path: String {
-        switch self {
-        case .register(_, _):
-            return "/register"
-        }
-    }
+    var httpMethod: HTTPMethod { .get }
+    
+    var path: String { "/fdsnws/event/1/query" }
     
     var parameters: [String: Any]? {
         switch self {
-        case .register(let username, let password):
-            return ["username": username, "password": password]
+        case .summary(let latitude, let longitude):
+            return ["format": "geojson",
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "maxradius": 1,
+                    "minmagnitude": 3,
+                    "limit": 200
+            ]
         }
     }
     

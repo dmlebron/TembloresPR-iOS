@@ -9,13 +9,24 @@
 import SwiftUI
 
 struct InfoView: View {
+    
+    let title: String
+    let detail: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .center) {
+            Text(NSLocalizedString(title, comment: ""))
+                .font(.body)
+            Spacer()
+            Text(NSLocalizedString(detail, comment: ""))
+                .foregroundColor(.secondary)
+        }
+        .padding(.horizontal)
     }
 }
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView()
+        InfoView(title: "Title", detail: "Detail")
     }
 }
