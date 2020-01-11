@@ -22,25 +22,18 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(viewModel.earthquakes, id: \.id) { earthquake in
-                NavigationLink(destination: MapView(latitude: earthquake.geometry.coordinates[1], longitude: earthquake.geometry.coordinates[0])) {
-                    HStack {
-                        //                Text(String(describing: earthquake.properties.magnitude))
-                        //                    .frame(width: 40)
-                        //                    .font(.title)
-                        //
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(earthquake.properties.place)
-                                .font(.body)
-                            
-                            Text(self.viewModel.dateString(for: earthquake.properties.time))
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                    }
+                NavigationLink(destination: DetailView(viewModel: DetailViewModel(earthquake: earthquake))) {
+                    EarthquakeView(viewModel: EarthquakeViewViewModel(earthquake: earthquake))
+                        .padding(.vertical, 8)
                 }
             }
-            .navigationBarTitle("Teamblores PR")
+            .navigationBarTitle(self.viewModel.title)
+            .onAppear { self.viewModel.loadSummary() } 
         }
+    }
+    
+    func load() {
+        self.viewModel.loadSummary(clearsAll: true)
     }
 }
 
@@ -53,33 +46,65 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-class SummaryViewModel: ObservableObject {
+struct EarthquakeView: View {
     
-    @Published private(set) var earthquakes: [Earthquake] = []
-    private var subscriber: AnyCancellable?
+    let viewModel: EarthquakeViewViewModel
     
-    let earthquakeService: EarthquakeService
-    
-    init(earthquakeService: EarthquakeService) {
-        self.earthquakeService = earthquakeService
-        loadSummary()
-    }
-    
-    private func loadSummary() {
-        subscriber = earthquakeService.loadEarthQuakes().receive(on: DispatchQueue.main).sinkToResult { result in
-            switch result {
-            case .success(let earthquakes):
-                self.earthquakes = earthquakes.earthquakes
-            case .failure(let error as NSError):
-                print(error.debugDescription)
+    var body: some View {
+        HStack {
+            Text(viewModel.magnitudeString)
+                .font(.title)
+                .fontWeight(.bold)
+                .frame(width: 60)
+                .foregroundColor(viewModel.magnitudeEnergy.color)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(viewModel.place)
+                    .font(.body)
+                
+                Text(viewModel.dateString)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
         }
     }
+}
+
+struct EarthquakeViewViewModel {
     
-    func dateString(for timeInterval: TimeInterval) -> String {
+    let magnitudeString: String
+    let magnitudeEnergy: EarthquakeEnergy
+    let place: String
+    let dateString: String
+    
+    init(earthquake: Earthquake) {
+        self.magnitudeString = EarthquakeViewViewModel.magnitudeString(from: earthquake.properties.magnitude)
+        self.magnitudeEnergy = EarthquakeViewViewModel.earthquakeEnergy(for: earthquake.properties.magnitude)
+        self.place = earthquake.properties.place
+        self.dateString = EarthquakeViewViewModel.dateString(from: earthquake.properties.time)
+    }
+    
+    private static func magnitudeString(from magnitude: Double) -> String {
+        return String(format: "%.01f", magnitude)
+    }
+    
+    private static func earthquakeEnergy(for magnitude: Double) -> EarthquakeEnergy {
+        if magnitude < 4 {
+            return .small
+        } else if magnitude >= 4 && magnitude < 6 {
+            return .moderate
+        } else if magnitude >= 6 && magnitude < 8 {
+            return .major
+        } else {
+            return .great
+        }
+    }
+    
+    private static func dateString(from timeInterval: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timeInterval/1000)
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy h:mm"
+        formatter.dateFormat = "MMM dd, yyyy h:mm a"
+        formatter.timeZone = TimeZone(abbreviation: "AST")
         return formatter.string(from: date)
     }
 }

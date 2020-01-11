@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct EarthquakeGeometry: Codable {
+    let coordinates: [Double]
+}

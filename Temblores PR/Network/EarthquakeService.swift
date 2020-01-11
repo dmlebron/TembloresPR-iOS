@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import Combine
+
+class EarthquakeService {
+    
+    let service: Network
+      
+      init(service: Network) {
+          self.service = service
+      }
+
+      func loadEarthQuakes() -> AnyPublisher<EarthquakeList, Error> {
+        let endpoint = EarthquakeEndpoint.summary(18.4655, longitude: -66.1067)
+          return service.startTransaction(for: endpoint.urlRequest()!)
+              .decode(type: EarthquakeList.self, decoder: JSONDecoder())
+              .eraseToAnyPublisher()
+      }
+    
+}
