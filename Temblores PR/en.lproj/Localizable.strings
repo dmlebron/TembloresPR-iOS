@@ -5,3 +5,17 @@
   Created by Eduardo Moll on 1/8/20.
   Copyright © 2020 eduardo moll. All rights reserved.
 */
+
+"Date" = "Date";
+"Magnitude" = "Magnitude";
+"Depth" = "Depth";
+"Intensity" = "Intensity";
+"Alert" = "Alert";
+"Latitude" = "Latitude";
+"Longitude" = "Longitude";
+
+// MARK: - Colors
+"Green" = "Green";
+"Yellow" = "Yellow";
+"Orange" = "Orange";
+"Red" = "Red";

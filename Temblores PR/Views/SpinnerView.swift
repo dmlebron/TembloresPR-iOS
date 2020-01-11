@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct SpinnerView: UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView(style: .large)
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+        uiView.startAnimating()
+    }
+}
