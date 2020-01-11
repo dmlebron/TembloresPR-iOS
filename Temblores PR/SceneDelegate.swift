@@ -22,13 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let network = NetworkService(session: .shared)
         let earthquakeService = EarthquakeService(service: network)
-        let summaryViewModel = SummaryViewModel(earthquakeService: earthquakeService)
-        let contentView = ContentView(viewModel: summaryViewModel)
+        let repository = EarthquakeRemoteRepository(service: earthquakeService)
+        let summaryViewModel = SummaryViewModel(repository: repository)
+        let locationsViewModel = EarthquakeLocationsViewModel(repository: repository)
+        let tabView = MainTabView(summarViewModel: summaryViewModel, locationsViewModel: locationsViewModel)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(rootView: tabView)
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -44,13 +44,15 @@
 		88D543CF23C9855B00EC793E /* String+TembloresPR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543CE23C9855B00EC793E /* String+TembloresPR.swift */; };
 		88D543D123C987D500EC793E /* EarthquakeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D023C987D500EC793E /* EarthquakeViewViewModel.swift */; };
 		88D543D323C9880100EC793E /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D223C9880100EC793E /* EarthquakeView.swift */; };
+		88D543D623C9922200EC793E /* EarthquakeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D523C9922200EC793E /* EarthquakeRepository.swift */; };
+		88D543D823C9926E00EC793E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D723C9926E00EC793E /* MainTabView.swift */; };
+		88D543DA23CA1D7800EC793E /* EarthquakeLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D923CA1D7800EC793E /* EarthquakeLocationsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		884101BC23C562F9006EF952 /* Temblores PR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Temblores PR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		884101BF23C562F9006EF952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		884101C123C562F9006EF952 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		884101C323C562F9006EF952 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		884101C523C562FA006EF952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		884101CB23C562FA006EF952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		884101CD23C562FA006EF952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +92,9 @@
 		88D543CE23C9855B00EC793E /* String+TembloresPR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TembloresPR.swift"; sourceTree = "<group>"; };
 		88D543D023C987D500EC793E /* EarthquakeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewViewModel.swift; sourceTree = "<group>"; };
 		88D543D223C9880100EC793E /* EarthquakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeView.swift; sourceTree = "<group>"; };
+		88D543D523C9922200EC793E /* EarthquakeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeRepository.swift; sourceTree = "<group>"; };
+		88D543D723C9926E00EC793E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		88D543D923CA1D7800EC793E /* EarthquakeLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeLocationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +139,9 @@
 		884101BE23C562F9006EF952 /* Temblores PR */ = {
 			isa = PBXGroup;
 			children = (
+				88D543D423C9920A00EC793E /* Repository */,
 				884101CD23C562FA006EF952 /* Info.plist */,
 				884101BF23C562F9006EF952 /* AppDelegate.swift */,
-				884101C323C562F9006EF952 /* ContentView.swift */,
 				884101C123C562F9006EF952 /* SceneDelegate.swift */,
 				8895F87023C951DC00B5297A /* Assets.xcassets */,
 				8895F88223C951DE00B5297A /* Extensions */,
@@ -204,6 +209,8 @@
 				8895F86E23C951DC00B5297A /* BottomSheetView.swift */,
 				8895F86F23C951DC00B5297A /* ContentView.swift */,
 				88D543D223C9880100EC793E /* EarthquakeView.swift */,
+				88D543D723C9926E00EC793E /* MainTabView.swift */,
+				88D543D923CA1D7800EC793E /* EarthquakeLocationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +240,14 @@
 				8895F85423C951DC00B5297A /* Firebase */,
 			);
 			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		88D543D423C9920A00EC793E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				88D543D523C9922200EC793E /* EarthquakeRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +329,7 @@
 				8895F8B123C951DE00B5297A /* Collection+TembloresPR.swift in Sources */,
 				8895F8A823C951DE00B5297A /* DetailsViewModel.swift in Sources */,
 				88D543CF23C9855B00EC793E /* String+TembloresPR.swift in Sources */,
+				88D543D823C9926E00EC793E /* MainTabView.swift in Sources */,
 				8895F8A423C951DE00B5297A /* ContentView.swift in Sources */,
 				8895F89F23C951DE00B5297A /* DetailView.swift in Sources */,
 				8895F8BD23C9653600B5297A /* EarthquakeEnergy.swift in Sources */,
@@ -326,8 +342,10 @@
 				8895F8A923C951DE00B5297A /* SummaryViewModel.swift in Sources */,
 				8895F89E23C951DE00B5297A /* Publisher+TembloresPR.swift in Sources */,
 				8895F8A023C951DE00B5297A /* InfoView.swift in Sources */,
+				88D543D623C9922200EC793E /* EarthquakeRepository.swift in Sources */,
 				88D543D123C987D500EC793E /* EarthquakeViewViewModel.swift in Sources */,
 				8895F8A123C951DE00B5297A /* SpinnerView.swift in Sources */,
+				88D543DA23CA1D7800EC793E /* EarthquakeLocationsView.swift in Sources */,
 				8895F89D23C951DE00B5297A /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

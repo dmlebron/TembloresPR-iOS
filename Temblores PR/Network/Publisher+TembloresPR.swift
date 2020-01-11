@@ -6,11 +6,12 @@
 //  Copyright © 2019 Moll, Eduardo. All rights reserved.
 //
 
+import Foundation
 import Combine
 
 extension Publisher {
     func sinkToResult(_ result: @escaping (Result<Output, Failure>) -> Void) -> AnyCancellable {
-        return sink(receiveCompletion: { (completion) in
+        return receive(on: DispatchQueue.main).sink(receiveCompletion: { (completion) in
             switch completion {
             case .failure(let error):
                 result(.failure(error))

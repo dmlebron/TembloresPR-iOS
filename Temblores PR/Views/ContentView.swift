@@ -36,7 +36,7 @@ struct ContentView: View {
         .onAppear { self.viewModel.loadSummary() }
     }
     
-    func load() {
+    private func load() {
         self.viewModel.loadSummary(clearsAll: true)
     }
 }
@@ -44,8 +44,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView(viewModel: SummaryViewModel(earthquakeService:
-            EarthquakeService(service: NetworkService(session: .shared))
-        ))
+        EmptyView()
+//        ContentView(viewModel: SummaryViewModel(earthquakeService:
+//            EarthquakeService(service: NetworkService(session: .shared))
+//        ))
     }
 }
