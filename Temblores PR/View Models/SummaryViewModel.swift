@@ -14,15 +14,15 @@ class SummaryViewModel: ObservableObject {
     @Published private(set) var earthquakes: [Earthquake] = []
     private var subscriber: AnyCancellable?
     
-    let earthquakeService: EarthquakeService
     let title: String = "Temblores PR"
+    let repository: EarthquakeRepository
     
-    init(earthquakeService: EarthquakeService) {
-        self.earthquakeService = earthquakeService
+    init(repository: EarthquakeRepository) {
+        self.repository = repository
     }
     
     func loadSummary(clearsAll: Bool = false) {
-        subscriber = earthquakeService.loadEarthQuakes().receive(on: DispatchQueue.main).sinkToResult { result in
+        subscriber = repository.loadSummary().sinkToResult { result in
             switch result {
             case .success(let earthquakes):
                 if clearsAll { self.earthquakes.removeAll() }
@@ -32,4 +32,11 @@ class SummaryViewModel: ObservableObject {
             }
         }
     }
+    
+    func sort() {
+        self.earthquakes = earthquakes.sorted {
+            $0.properties.magnitude > $1.properties.magnitude
+        }
+    }
 }
+

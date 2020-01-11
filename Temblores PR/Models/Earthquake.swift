@@ -37,6 +37,5 @@ struct EarthquakeProperties: Codable {
         case time
         case title
         case intensity = "cdi"
-        
     }
 }

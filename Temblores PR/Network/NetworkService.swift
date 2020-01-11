@@ -28,7 +28,6 @@ extension Endpoint {
     var version: String? { "1.0" }
     
     func urlRequest() -> URLRequest? {
-        
         guard var urlComponents = URLComponents(string: baseURL + path) else { return nil }
         let queryItems = parameters?.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         urlComponents.queryItems = queryItems

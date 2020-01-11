@@ -20,7 +20,9 @@ struct DetailView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            MapView(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
+            MapView(viewModel: MapViewViewModel(magnitude: self.viewModel.magnitude,
+                                                latitude: self.viewModel.latitude,
+                                                longitude: self.viewModel.longitude))
             BottomSheetView(isOpen: self.$isShowingBottomSheet, maxHeight: geometry.size.height * 0.9) {
 
                 Group {

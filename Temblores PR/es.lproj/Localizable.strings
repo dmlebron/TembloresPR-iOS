@@ -6,6 +6,14 @@
   Copyright © 2020 eduardo moll. All rights reserved.
 */
 
+// MARK: - Main TabBar
+"Earthquakes" = "Temblores";
+"Map" = "Mapa";
+
+// MARK - Eathquake Map
+"Earthquake Map" = "Mapa de Temblores";
+
+// MARK: - Details Screen
 "Date" = "Fecha";
 "Magnitude" = "Magnitud";
 "Depth" = "Profundidad";
