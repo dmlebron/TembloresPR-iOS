@@ -32,7 +32,6 @@ struct EarthquakeView: View {
     }
 }
 
-
 struct EarthquakeView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyView()

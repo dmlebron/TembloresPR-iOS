@@ -8,12 +8,12 @@
 
 import SwiftUI
 import Combine
+import FirebaseAnalytics
 
 struct ContentView: View {
     
-    let network = NetworkService(session: .shared)
-    
     @ObservedObject private var viewModel: SummaryViewModel
+    @State private var notificationSubscriber: AnyCancellable?
     
     init(viewModel: SummaryViewModel) {
         self.viewModel = viewModel
@@ -21,7 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            if viewModel.earthquakes.isEmpty {
+            if viewModel.isLoading {
                 SpinnerView()
             } else {
                 List(viewModel.earthquakes, id: \.id) { earthquake in
@@ -34,10 +34,17 @@ struct ContentView: View {
             }
         }
         .onAppear { self.viewModel.loadSummary() }
+        .onAppear { self.susbcribe() }
     }
     
-    private func load() {
-        self.viewModel.loadSummary(clearsAll: true)
+    private func susbcribe() {
+        notificationSubscriber = NotificationCenter.default
+            .publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { _ in
+                if !self.viewModel.isLoading {
+                    self.viewModel.loadSummary(clearsAll: true)
+                }
+        }
     }
 }
 
@@ -45,8 +52,5 @@ struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         EmptyView()
-//        ContentView(viewModel: SummaryViewModel(earthquakeService:
-//            EarthquakeService(service: NetworkService(session: .shared))
-//        ))
     }
 }

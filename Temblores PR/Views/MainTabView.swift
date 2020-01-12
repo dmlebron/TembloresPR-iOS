@@ -28,7 +28,7 @@ struct MainTabView: View {
                     Text("Map")
             }
         }
-        .accentColor(.black)
+        .accentColor(.primary)
         .edgesIgnoringSafeArea(.top)
     }
 }
@@ -36,6 +36,5 @@ struct MainTabView: View {
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyView()
-        //        MainTabView()
     }
 }

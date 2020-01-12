@@ -33,6 +33,7 @@ class EarthquakeLocationsViewModel: ObservableObject {
                     let magnitude = String(format: "%.01f", quake.properties.magnitude)
                     return EarthquakeAnnotationData(magnitude: magnitude, coordinates: coordinates)
                 }
+                self.coordinates.removeAll()
                 self.coordinates = coordinates
             case .failure(let error):
                 print(error)
