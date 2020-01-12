@@ -20,7 +20,11 @@ struct EarthquakeLocationsView: View {
            MapView(viewModel: MapViewViewModel(coordindates: viewModel.coordinates))
             .navigationBarTitle("Earthquake Map", displayMode: .inline)
         }
-        .onAppear { self.susbcribe() }
+        .onAppear {
+            if self.notificationSubscriber == nil {
+                self.susbcribe()
+            }
+        }
     }
     
     private func susbcribe() {

@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @ObservedObject private var viewModel: SummaryViewModel
     @State private var notificationSubscriber: AnyCancellable?
+    @State private var isFirstLoad = true
     
     init(viewModel: SummaryViewModel) {
         self.viewModel = viewModel
@@ -33,8 +34,17 @@ struct ContentView: View {
                 .navigationBarTitle(self.viewModel.title)
             }
         }
-        .onAppear { self.viewModel.loadSummary() }
-        .onAppear { self.susbcribe() }
+        .onAppear {
+            if self.isFirstLoad {
+                self.viewModel.loadSummary()
+                self.isFirstLoad = false
+            }
+        }
+        .onAppear {
+            if self.notificationSubscriber == nil {
+                self.susbcribe()
+            }
+        }
     }
     
     private func susbcribe() {
