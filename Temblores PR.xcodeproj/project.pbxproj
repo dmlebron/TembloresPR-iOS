@@ -53,6 +53,7 @@
 		88D543EE23CAA6BC00EC793E /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */; };
 		88D543F023CAC1C000EC793E /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543EF23CAC1C000EC793E /* MainFactory.swift */; };
 		88D543F323CAC63900EC793E /* EarthquakeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543F223CAC63900EC793E /* EarthquakeEndpoint.swift */; };
+		88D543F523CACAC600EC793E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543F423CACAC600EC793E /* EmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
 		88D543EF23CAC1C000EC793E /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		88D543F223CAC63900EC793E /* EarthquakeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EarthquakeEndpoint.swift; path = ../../EarthquakeEndpoint.swift; sourceTree = "<group>"; };
+		88D543F423CACAC600EC793E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				88D543D223C9880100EC793E /* EarthquakeView.swift */,
 				88D543D723C9926E00EC793E /* MainTabView.swift */,
 				88D543D923CA1D7800EC793E /* EarthquakeLocationsView.swift */,
+				88D543F423CACAC600EC793E /* EmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				8895F8A923C951DE00B5297A /* SummaryViewModel.swift in Sources */,
 				88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */,
 				8895F89E23C951DE00B5297A /* Publisher+TembloresPR.swift in Sources */,
+				88D543F523CACAC600EC793E /* EmptyStateView.swift in Sources */,
 				8895F8A023C951DE00B5297A /* InfoView.swift in Sources */,
 				88D543D623C9922200EC793E /* EarthquakeRepository.swift in Sources */,
 				88D543D123C987D500EC793E /* EarthquakeViewViewModel.swift in Sources */,

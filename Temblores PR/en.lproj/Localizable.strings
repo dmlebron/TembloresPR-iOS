@@ -22,6 +22,11 @@
 "Latitude" = "Latitude";
 "Longitude" = "Longitude";
 
+// MARK: - Empty State
+"Error" = "Error";
+"Try Again Title" = "Try Again";
+"Try Again Message" = "Failed to load the information, please try again.";
+
 // MARK: - Colors
 "Green" = "Green";
 "Yellow" = "Yellow";

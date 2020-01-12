@@ -12,7 +12,7 @@ import Combine
 
 class SummaryViewModel: ObservableObject {
     
-    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var viewState: ViewState
     @Published private(set) var earthquakes: [Earthquake] = []
     private var subscriber: AnyCancellable?
     
@@ -21,17 +21,19 @@ class SummaryViewModel: ObservableObject {
     
     init(repository: EarthquakeRepository) {
         self.repository = repository
+        viewState = .error
     }
     
     func loadSummary(clearsAll: Bool = false) {
-        self.isLoading = true
+        self.viewState = .loading
         subscriber = repository.loadSummary().sinkToResult { result in
-            self.isLoading = false
             switch result {
             case .success(let earthquakes):
                 if clearsAll { self.earthquakes.removeAll() }
                 self.earthquakes.append(contentsOf: earthquakes.earthquakes)
+                self.viewState = .loaded
             case .failure(let error as NSError):
+                self.viewState = .error
                 print(error.debugDescription)
             }
         }
