@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		884101C023C562F9006EF952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884101BF23C562F9006EF952 /* AppDelegate.swift */; };
 		884101C223C562F9006EF952 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884101C123C562F9006EF952 /* SceneDelegate.swift */; };
-		884101C623C562FA006EF952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884101C523C562FA006EF952 /* Assets.xcassets */; };
 		884101CC23C562FA006EF952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884101CA23C562FA006EF952 /* LaunchScreen.storyboard */; };
 		8895F88C23C951DE00B5297A /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895F85123C951DC00B5297A /* Earthquake.swift */; };
 		8895F88D23C951DE00B5297A /* EarthquakeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895F85223C951DC00B5297A /* EarthquakeGeometry.swift */; };
@@ -394,7 +393,6 @@
 				8895F8B823C9551B00B5297A /* Localizable.strings in Resources */,
 				8895F8BB23C95EF300B5297A /* GoogleService-Info.plist in Resources */,
 				8895F8A523C951DE00B5297A /* Assets.xcassets in Resources */,
-				884101C623C562FA006EF952 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
