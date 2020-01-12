@@ -49,6 +49,7 @@
 		88D543DA23CA1D7800EC793E /* EarthquakeLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543D923CA1D7800EC793E /* EarthquakeLocationsView.swift */; };
 		88D543E223CA7FD400EC793E /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543E123CA7FD400EC793E /* DetailViewModelTests.swift */; };
 		88D543EA23CA8A9400EC793E /* EarthquakeLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */; };
+		88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		88D543E123CA7FD400EC793E /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		88D543E323CA7FD400EC793E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeLocationsViewModel.swift; sourceTree = "<group>"; };
+		88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +166,8 @@
 		884101BE23C562F9006EF952 /* Temblores PR */ = {
 			isa = PBXGroup;
 			children = (
-				88D543D423C9920A00EC793E /* Repository */,
 				884101CD23C562FA006EF952 /* Info.plist */,
+				88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */,
 				884101BF23C562F9006EF952 /* AppDelegate.swift */,
 				884101C123C562F9006EF952 /* SceneDelegate.swift */,
 				8895F87023C951DC00B5297A /* Assets.xcassets */,
@@ -174,6 +176,7 @@
 				8895F8B623C9551A00B5297A /* Localizable.strings */,
 				8895F85023C951DC00B5297A /* Models */,
 				8895F86523C951DC00B5297A /* Network */,
+				88D543D423C9920A00EC793E /* Repository */,
 				8895F8B423C951F800B5297A /* Third Party */,
 				8895F87423C951DD00B5297A /* View Models */,
 				8895F86923C951DC00B5297A /* Views */,
@@ -406,6 +409,7 @@
 				8895F89C23C951DE00B5297A /* EarthquakeService.swift in Sources */,
 				8895F8A323C951DE00B5297A /* BottomSheetView.swift in Sources */,
 				8895F8A923C951DE00B5297A /* SummaryViewModel.swift in Sources */,
+				88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */,
 				8895F89E23C951DE00B5297A /* Publisher+TembloresPR.swift in Sources */,
 				8895F8A023C951DE00B5297A /* InfoView.swift in Sources */,
 				88D543D623C9922200EC793E /* EarthquakeRepository.swift in Sources */,

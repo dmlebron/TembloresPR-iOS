@@ -13,19 +13,26 @@ import Combine
 struct EarthquakeLocationsView: View {
     
     @ObservedObject var viewModel: EarthquakeLocationsViewModel
+    @State private var notificationSubscriber: AnyCancellable?
     
     var body: some View {
         NavigationView {
            MapView(viewModel: MapViewViewModel(coordindates: viewModel.coordinates))
             .navigationBarTitle("Earthquake Map", displayMode: .inline)
         }
-        
+        .onAppear { self.susbcribe() }
+    }
+    
+    private func susbcribe() {
+        notificationSubscriber = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { _ in
+                self.viewModel.loadLocations()
+        }
     }
 }
 
 struct EarthquakeLocationsView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyView()
-//        EarthquakeLocationsView()
     }
 }
