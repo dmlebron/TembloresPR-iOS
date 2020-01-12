@@ -52,39 +52,8 @@ class NetworkService: Network {
     }
     
     func startTransaction(for request: URLRequest) -> AnyPublisher<Data, URLError> {
-        print("🚨 START Transaction")
-        return session.dataTaskPublisher(for: request)
+        session.dataTaskPublisher(for: request)
         .map { $0.data }
         .eraseToAnyPublisher()
-    }
-}
-
-enum EarthquakeEndpoint: Endpoint {
-    
-    case summary(_ latitude: Double, longitude: Double)
-    
-    var baseURL: String {
-        return "https://earthquake.usgs.gov"
-    }
-    
-    var httpMethod: HTTPMethod { .get }
-    
-    var path: String { "/fdsnws/event/1/query" }
-    
-    var parameters: [String: Any]? {
-        switch self {
-        case .summary(let latitude, let longitude):
-            return ["format": "geojson",
-                    "latitude": latitude,
-                    "longitude": longitude,
-                    "maxradius": 1,
-                    "minmagnitude": 3,
-                    "limit": 200
-            ]
-        }
-    }
-    
-    var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
     }
 }

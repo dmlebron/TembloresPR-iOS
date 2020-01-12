@@ -13,7 +13,8 @@ class MainFactory {
     private let sharedRepository: EarthquakeRepository
     
     init() {
-        func makeEathquakeService() -> EarthquakeService {
+        
+        func makeEathquakeService() -> EarthquakeApiService {
             let network = NetworkService(session: .shared)
             let earthquakeService = EarthquakeService(service: network)
             return earthquakeService
