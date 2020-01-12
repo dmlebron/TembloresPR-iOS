@@ -51,6 +51,7 @@
 		88D543EA23CA8A9400EC793E /* EarthquakeLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */; };
 		88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */; };
 		88D543EE23CAA6BC00EC793E /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */; };
+		88D543F023CAC1C000EC793E /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543EF23CAC1C000EC793E /* MainFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeLocationsViewModel.swift; sourceTree = "<group>"; };
 		88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
+		88D543EF23CAC1C000EC793E /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				8895F87423C951DD00B5297A /* View Models */,
 				8895F86923C951DC00B5297A /* Views */,
 				884101C523C562FA006EF952 /* Assets.xcassets */,
+				88D543EF23CAC1C000EC793E /* MainFactory.swift */,
 			);
 			path = "Temblores PR";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				8895F88C23C951DE00B5297A /* Earthquake.swift in Sources */,
 				8895F88D23C951DE00B5297A /* EarthquakeGeometry.swift in Sources */,
 				8895F89C23C951DE00B5297A /* EarthquakeService.swift in Sources */,
+				88D543F023CAC1C000EC793E /* MainFactory.swift in Sources */,
 				8895F8A323C951DE00B5297A /* BottomSheetView.swift in Sources */,
 				8895F8A923C951DE00B5297A /* SummaryViewModel.swift in Sources */,
 				88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */,

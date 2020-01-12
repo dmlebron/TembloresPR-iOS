@@ -52,7 +52,8 @@ class NetworkService: Network {
     }
     
     func startTransaction(for request: URLRequest) -> AnyPublisher<Data, URLError> {
-        session.dataTaskPublisher(for: request)
+        print("🚨 START Transaction")
+        return session.dataTaskPublisher(for: request)
         .map { $0.data }
         .eraseToAnyPublisher()
     }

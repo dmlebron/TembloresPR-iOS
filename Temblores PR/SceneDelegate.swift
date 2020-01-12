@@ -12,6 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var factory: MainFactory!
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,12 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         // Create the SwiftUI view that provides the window contents.
-        let network = NetworkService(session: .shared)
-        let earthquakeService = EarthquakeService(service: network)
-        let repository = EarthquakeRemoteRepository(service: earthquakeService)
-        let summaryViewModel = SummaryViewModel(repository: repository)
-        let locationsViewModel = EarthquakeLocationsViewModel(repository: repository)
-        let tabView = MainTabView(summarViewModel: summaryViewModel, locationsViewModel: locationsViewModel)
+        factory = MainFactory()
+        let summaryViewModel = factory.makeSummaryViewModel()
+        let locationsViewModel = factory.makeEarthquakeLocationsViewModel()
+        let tabView = MainTabView(summarViewModel: summaryViewModel,
+                                  locationsViewModel: locationsViewModel)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
