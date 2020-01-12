@@ -17,8 +17,16 @@ struct EarthquakeLocationsView: View {
     
     var body: some View {
         NavigationView {
-           MapView(viewModel: MapViewViewModel(coordindates: viewModel.coordinates))
-            .navigationBarTitle("Earthquake Map", displayMode: .inline)
+            if self.viewModel.viewState == .error {
+                EmptyStateView(title: "Error",
+                               message: "Try Again Message",
+                               buttonTitle: "Try Again Title",
+                               buttonAction: self.loadData)
+                
+            } else {
+                MapView(viewModel: MapViewViewModel(coordindates: viewModel.annotationData))
+                .navigationBarTitle("Earthquake Map", displayMode: .inline)
+            }
         }
         .onAppear {
             if self.notificationSubscriber == nil {
@@ -32,6 +40,10 @@ struct EarthquakeLocationsView: View {
             .sink { _ in
                 self.viewModel.loadLocations()
         }
+    }
+    
+    private func loadData() {
+        self.viewModel.loadLocations()
     }
 }
 

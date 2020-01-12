@@ -10,6 +10,12 @@ import SwiftUI
 import Combine
 import FirebaseAnalytics
 
+enum ViewState {
+    case loading
+    case loaded
+    case error
+}
+
 struct ContentView: View {
     
     @ObservedObject private var viewModel: SummaryViewModel
@@ -22,9 +28,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            if viewModel.isLoading {
+            if viewModel.viewState == .loading {
                 SpinnerView()
-            } else {
+            } else if viewModel.viewState == .loaded {
                 List(viewModel.earthquakes, id: \.id) { earthquake in
                     NavigationLink(destination: DetailView(viewModel: DetailViewModel(earthquake: earthquake))) {
                         EarthquakeView(viewModel: EarthquakeViewViewModel(earthquake: earthquake))
@@ -32,6 +38,11 @@ struct ContentView: View {
                     }
                 }
                 .navigationBarTitle(self.viewModel.title)
+            } else if viewModel.viewState == .error {
+                EmptyStateView(title: "Error",
+                               message: "Try Again Message",
+                               buttonTitle: "Try Again",
+                               buttonAction: self.loadData)
             }
         }
         .onAppear {
@@ -51,10 +62,14 @@ struct ContentView: View {
         notificationSubscriber = NotificationCenter.default
             .publisher(for: UIApplication.willEnterForegroundNotification)
             .sink { _ in
-                if !self.viewModel.isLoading {
+                if self.viewModel.viewState != .loading {
                     self.viewModel.loadSummary(clearsAll: true)
                 }
         }
+    }
+    
+    private func loadData() {
+        self.viewModel.loadSummary()
     }
 }
 

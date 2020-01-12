@@ -12,32 +12,41 @@ import CoreLocation
 
 class EarthquakeLocationsViewModel: ObservableObject {
     
-    let repository: EarthquakeRepository
+    @Published private(set) var viewState: ViewState
+    @Published private(set) var annotationData: [EarthquakeAnnotationData] = []
     private var subscriber: AnyCancellable?
-    @Published private(set) var coordinates: [EarthquakeAnnotationData] = []
     
+    let repository: EarthquakeRepository
     
     init(repository: EarthquakeRepository) {
         self.repository = repository
+        self.viewState = .loading
         loadLocations()
     }
     
     func loadLocations() {
+        self.viewState = .loading
         subscriber = repository.loadSummary().sinkToResult { (result) in
             switch result {
             case .success(let list):
-                let coordinates = list.earthquakes.compactMap { quake -> EarthquakeAnnotationData? in
-                    guard let coordinate = self.getCoordinates(from: quake.geometry) else { return nil }
-                    let coordinates = CLLocationCoordinate2D(latitude: coordinate.latitude,
-                                                             longitude: coordinate.longitude)
-                    let magnitude = String(format: "%.01f", quake.properties.magnitude)
-                    return EarthquakeAnnotationData(magnitude: magnitude, coordinates: coordinates)
-                }
-                self.coordinates.removeAll()
-                self.coordinates = coordinates
+                let annotationData = self.getAnnotationData(from: list)
+                self.annotationData.removeAll()
+                self.annotationData = annotationData
+                self.viewState = .loaded
             case .failure(let error):
+                self.viewState = .error
                 print(error)
             }
+        }
+    }
+    
+    private func getAnnotationData(from list: EarthquakeList) -> [EarthquakeAnnotationData] {
+         return list.earthquakes.compactMap { quake -> EarthquakeAnnotationData? in
+            guard let coordinate = self.getCoordinates(from: quake.geometry) else { return nil }
+            let coordinates = CLLocationCoordinate2D(latitude: coordinate.latitude,
+                                                     longitude: coordinate.longitude)
+            let magnitude = String(format: "%.01f", quake.properties.magnitude)
+            return EarthquakeAnnotationData(magnitude: magnitude, coordinates: coordinates)
         }
     }
     
