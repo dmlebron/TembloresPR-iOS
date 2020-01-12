@@ -9,7 +9,11 @@
 import Foundation
 import Combine
 
-class EarthquakeService {
+protocol EarthquakeApiService {
+    func loadEarthQuakes() -> AnyPublisher<EarthquakeList, Error>
+}
+
+class EarthquakeService: EarthquakeApiService {
     
     let service: Network
       

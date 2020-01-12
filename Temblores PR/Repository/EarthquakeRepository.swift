@@ -15,10 +15,9 @@ protocol EarthquakeRepository {
 
 struct EarthquakeRemoteRepository: EarthquakeRepository {
 
-    // Make this a protocol type
-    let service: EarthquakeService
+    let service: EarthquakeApiService
     
-    init(service: EarthquakeService) {
+    init(service: EarthquakeApiService) {
         self.service = service
     }
     
