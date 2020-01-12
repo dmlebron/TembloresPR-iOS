@@ -10,6 +10,9 @@
 "Earthquakes" = "Temblores";
 "Map" = "Mapa";
 
+// MARK: - Summary
+"Sort By" = "Ordernar";
+
 // MARK - Eathquake Map
 "Earthquake Map" = "Mapa de Temblores";
 

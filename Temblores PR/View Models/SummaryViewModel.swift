@@ -14,11 +14,12 @@ class SummaryViewModel: ObservableObject {
     
     @Published private(set) var viewState: ViewState
     @Published private(set) var earthquakes: [Earthquake] = []
+    
+    private let repository: EarthquakeRepository
     private var subscriber: AnyCancellable?
     
     let title: String = "Temblores PR"
-    let repository: EarthquakeRepository
-    
+
     init(repository: EarthquakeRepository) {
         self.repository = repository
         viewState = .error
@@ -39,9 +40,14 @@ class SummaryViewModel: ObservableObject {
         }
     }
     
-    func sort() {
+    func sort(by sortmode: SortMode) {
         self.earthquakes = earthquakes.sorted {
-            $0.properties.magnitude > $1.properties.magnitude
+            switch sortmode {
+            case .date:
+                return $0.properties.time > $1.properties.time
+            case .magnitude:
+                return $0.properties.magnitude > $1.properties.magnitude
+            }
         }
     }
 }
