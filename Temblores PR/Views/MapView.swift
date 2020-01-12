@@ -33,23 +33,4 @@ struct MapView: UIViewRepresentable {
     }
 }
 
-struct MapViewViewModel {
-    let coordindates: [EarthquakeAnnotationData]
-    
-    init(magnitude: String, latitude: Double, longitude: Double) {
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let annotationData = EarthquakeAnnotationData(magnitude: magnitude, coordinates: coordinate)
-        self.coordindates = [annotationData]
-    }
-    
-    init(coordindates: [EarthquakeAnnotationData]) {
-        self.coordindates = coordindates
-    }
-}
-
-struct EarthquakeAnnotationData {
-    let magnitude: String
-    let coordinates: CLLocationCoordinate2D
-}
-
 

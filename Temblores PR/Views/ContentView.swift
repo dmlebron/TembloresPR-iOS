@@ -38,7 +38,8 @@ struct ContentView: View {
     }
     
     private func susbcribe() {
-        notificationSubscriber = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+        notificationSubscriber = NotificationCenter.default
+            .publisher(for: UIApplication.willEnterForegroundNotification)
             .sink { _ in
                 if !self.viewModel.isLoading {
                     self.viewModel.loadSummary(clearsAll: true)

@@ -50,6 +50,7 @@
 		88D543E223CA7FD400EC793E /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543E123CA7FD400EC793E /* DetailViewModelTests.swift */; };
 		88D543EA23CA8A9400EC793E /* EarthquakeLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */; };
 		88D543EC23CA9DA800EC793E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */; };
+		88D543EE23CAA6BC00EC793E /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		88D543E323CA7FD400EC793E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeLocationsViewModel.swift; sourceTree = "<group>"; };
 		88D543EB23CA9DA800EC793E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				8895F87623C951DD00B5297A /* SummaryViewModel.swift */,
 				88D543D023C987D500EC793E /* EarthquakeViewViewModel.swift */,
 				88D543E923CA8A9400EC793E /* EarthquakeLocationsViewModel.swift */,
+				88D543ED23CAA6BC00EC793E /* MapViewViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			files = (
 				88D543EA23CA8A9400EC793E /* EarthquakeLocationsViewModel.swift in Sources */,
 				884101C023C562F9006EF952 /* AppDelegate.swift in Sources */,
+				88D543EE23CAA6BC00EC793E /* MapViewViewModel.swift in Sources */,
 				8895F8A223C951DE00B5297A /* MapView.swift in Sources */,
 				8895F8B123C951DE00B5297A /* Collection+TembloresPR.swift in Sources */,
 				8895F8A823C951DE00B5297A /* DetailsViewModel.swift in Sources */,

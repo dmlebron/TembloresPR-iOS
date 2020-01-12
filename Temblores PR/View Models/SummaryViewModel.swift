@@ -12,7 +12,7 @@ import Combine
 
 class SummaryViewModel: ObservableObject {
     
-    @Published var isLoading: Bool = false
+    @Published private(set) var isLoading: Bool = false
     @Published private(set) var earthquakes: [Earthquake] = []
     private var subscriber: AnyCancellable?
     
