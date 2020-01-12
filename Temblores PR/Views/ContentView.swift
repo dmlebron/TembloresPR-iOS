@@ -16,11 +16,18 @@ enum ViewState {
     case error
 }
 
+enum SortMode {
+    case date
+    case magnitude
+}
+
 struct ContentView: View {
     
     @ObservedObject private var viewModel: SummaryViewModel
     @State private var notificationSubscriber: AnyCancellable?
     @State private var isFirstLoad = true
+    @State private var sortMode: SortMode?
+    @State private var isShowingSortSelector = false
     
     init(viewModel: SummaryViewModel) {
         self.viewModel = viewModel
@@ -38,6 +45,8 @@ struct ContentView: View {
                     }
                 }
                 .navigationBarTitle(self.viewModel.title)
+                .navigationBarItems(trailing: self.sortButton().frame(width: 48, height: 48))
+                .actionSheet(isPresented: self.$isShowingSortSelector, content: actionSheet)
             } else if viewModel.viewState == .error {
                 EmptyStateView(title: "Error",
                                message: "Try Again Message",
@@ -70,6 +79,20 @@ struct ContentView: View {
     
     private func loadData() {
         self.viewModel.loadSummary()
+    }
+    
+    private func sortButton() -> Button<Image> {
+        Button(action: { self.isShowingSortSelector.toggle() }) {
+            Image(systemName: "arrow.up.arrow.down")
+        }
+    }
+    
+    private func actionSheet() -> ActionSheet {
+        ActionSheet(title: Text("Sort By"), message: nil,
+                    buttons: [.default(Text("Date"), action: { self.viewModel.sort(by: .date) }),
+                              .default(Text("Magnitude"), action: { self.viewModel.sort(by: .magnitude) }),
+                              .cancel()
+        ])
     }
 }
 

@@ -10,6 +10,9 @@
 "Earthquakes" = "Earthquakes";
 "Map" = "Map";
 
+// MARK: - Summary
+"Sort By" = "Sort By";
+
 // MARK - Eathquake Map
 "Earthquake Map" = "Earthquake Map";
 
