@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 protocol EarthquakeApiService {
     func loadEarthQuakes() -> AnyPublisher<EarthquakeList, Error>
@@ -22,7 +23,8 @@ class EarthquakeService: EarthquakeApiService {
       }
 
       func loadEarthQuakes() -> AnyPublisher<EarthquakeList, Error> {
-        let endpoint = EarthquakeEndpoint.summary(18.4655, longitude: -66.1067)
+        let endpoint = EarthquakeEndpoint.summary(CLLocationCoordinate2D.PRCoordinates.latitude,
+                                                  longitude: CLLocationCoordinate2D.PRCoordinates.longitude)
           return service.startTransaction(for: endpoint.urlRequest()!)
               .decode(type: EarthquakeList.self, decoder: JSONDecoder())
               .eraseToAnyPublisher()
