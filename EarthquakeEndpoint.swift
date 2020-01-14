@@ -26,7 +26,7 @@ enum EarthquakeEndpoint: Endpoint {
             return ["format": "geojson",
                     "latitude": latitude,
                     "longitude": longitude,
-                    "maxradius": 2,
+                    "maxradius": 1,
                     "minmagnitude": 3,
                     "limit": 200
             ]
